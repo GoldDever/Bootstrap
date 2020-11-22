@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of all users</title>
+</head>
+<body>
+
+<div th:each="us : ${usersAll}">
+
+    <a th:href="@{/{id}/admin(id=${us.getId()})}" th:text="${us}">user</a>
+</div>
+
+<br/>
+<br/>
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Sign Out</button>
+</form>
+
+<br/>
+</body>
+</html>
