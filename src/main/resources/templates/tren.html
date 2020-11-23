@@ -17,16 +17,17 @@
         <a href="/logout" class="text-primary pr-3">Logout</a>
     </nav>
 </div>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-2">
             <br>
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
-                    <a href="/{id}/admin(id=${userGotIn.getId()})" class="nav-link active">Admin</a>
+                    <a href="/edit/admin" class="nav-link active">Admin</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/page/user" class="nav-link">User</a>
+                    <a href="/edit/admin" class="nav-link">User</a>
                 </li>
             </ul>
         </div>
@@ -68,10 +69,10 @@
                                 <td th:utext="${user.getName()}">Name</td>
                                 <td th:utext="${user.lastName}">Last Name</td>
                                 <td th:utext="${user.age}">Age</td>
-                               <!-- <td th:utext="${user.getRole()}">Role</td>-->
                                 <td><div th:each="us : ${user.getRole()}">
                                     <a th:text="${us}"/>
-                                </div></td>
+                                </div>
+                                </td>
                                 <td>
                                     <div class="btn-group">
                                         <button th:data-target="${'#editUser'+ user.getId()}"
@@ -310,15 +311,15 @@
                     <div class="card-header">
                         <b>Add new user</b>
                     </div>
-                    <div class="alert alert-info">
-                        <!--                            <p th:text="${message}"></p>-->
-                    </div>
+<!--                    <div class="alert alert-info">-->
+<!--                        &lt;!&ndash;                            <p th:text="${message}"></p>&ndash;&gt;-->
+<!--                    </div>-->
                     <div class="card-body text-center border">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-6">
-                                    <form th:action="@{/adding/addUser}" th:method="POST" th:object="${user}">
+                                    <form th:action="@{/}" th:method="POST" th:object="${newUser}">
                                         <div class="form-group">
                                             <label class="font-weight-bold">
                                                 Name
@@ -363,7 +364,6 @@
                                                    id="password"
                                                    placeholder="password"
                                                    required>
-
                                         </div>
 
                                         <div class="form-group">
